@@ -1,0 +1,71 @@
+<div class="login">
+  <div class="container w-75" >
+    <div class="loginform">
+      <div class="row align-items-center">
+
+
+
+        <div class="col-md-6 ">
+          <h2 class="fw-bold">SIGNIN</h2>
+
+          <form class=" w-100"  [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <div class="input-item">
+                <span class="ms-1">Email</span>
+                <input formControlName="email" type="email" class="form-control" placeholder="email" id="email">
+                @if (loginForm.get("email")?.errors &&loginForm.get("email")?.touched) {
+                  @if (loginForm.get("email")?.getError("required")) {
+                    <p class="text-white">Email is required</p>
+                  }
+                  @if (loginForm.get("email")?.getError("email")) {
+                    <p class=" text-white">Email should be Example&#64;email.com</p>
+                  }
+
+                }
+            </div>
+            <div class="input-item">
+              <span class="ms-1">Password</span>
+                <input formControlName="password" type="password" class="form-control" placeholder="password" id="password">
+                @if (loginForm.get("password")?.errors &&loginForm.get("password")?.touched) {
+                  @if (loginForm.get("password")?.getError("required")) {
+                    <p class=" text-white">password is required</p>
+                  }
+                  @if (loginForm.get("password")?.getError("pattern")) {
+                    <p class=" text-white">Password must contain 6 numbers , one capital and small letter </p>
+                  }
+                }
+            </div>
+            <div class="input-item ">
+              @if (errormessage != "") {
+                <div class="my-3">
+
+                <p class="text-white my-2">{{errormessage}}</p>
+              </div>
+              }
+              @if (isspin) {
+                <button><i class="fa-solid fa-circle-notch fa-spin"></i></button>
+              }@else{
+
+                <button [disabled]="loginForm.invalid">Login</button>
+              }
+            </div>
+            <div>
+              <div>
+                <span routerLink="/register"  class="register">Register Now</span>
+
+              </div>
+            </div>
+
+
+        </form>
+        </div>
+
+        <div class="col-md-6 text-center signinimg overflow-hidden">
+          <img src="assets/Images/signin-image.jpg"  alt="">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

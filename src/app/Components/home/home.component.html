@@ -1,0 +1,104 @@
+
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="assets/Images/hero-1.jpg" class="d-block w-100 " alt="...">
+
+        <div class="carousel-caption  d-none d-md-block">
+            <h5>Catch your own stylish & look</h5>
+            <p class="text-white-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</p>
+        </div>
+        </div>
+        <div class="carousel-item">
+             <img src="assets/Images/dd.jpg" class="d-block w-100 " alt="...">
+
+            <div class="carousel-caption  d-none d-md-block">
+                <h5>A thouroughly modern woman</h5>
+                <p class="text-white-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</p>
+            </div>
+        </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<div class="myshop">
+  <div class="container">
+    <div class="row g-1 align-items-stretch ">
+      <div class="col-12 text-center">
+        <h3>Shop The Collections</h3>
+        <p class="text-muted">Shop the latest products from the most popular collections.</p>
+      </div>
+      <div class="col-3">
+        <div class="shop-item">
+          <img src="assets/Images/4.jpg" class="img-fluid" alt="...">
+          <div class="layer">
+            <button><i (click)="setData(3)" class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="shop-item">
+          <img src="assets/Images/1.jpg" class="img-fluid" alt="...">
+          <div class="layer">
+            <button><i (click)="setData(2)" class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="shop-item">
+          <img src="assets/Images/2.jpg" class="img-fluid" alt="...">
+          <div class="layer">
+            <button><i (click)="setData(1)" class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="shop-item">
+          <img src="assets/Images/5.jpg" class="img-fluid" alt="...">
+          <div class="layer">
+            <button><i (click)="setData(4)" class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+  </div>
+  <div class="e3lan">
+    <img src="assets/Images/banner.jpg" alt="">
+    <div class="svg">
+      <button (click)="goShop()">Visit Shop</button>
+    </div>
+  </div>
+  </div>
+
+  <div class="products mt-5">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-12 position-relative">
+        <h3>-Products</h3>
+        <p class="text-muted d-flex justify-content-between"><span>Shop the latest products from the most popular collections.</span> <span class="viewmore" (click)="goShop()">view more</span></p>
+      </div>
+      @if (isloading) {
+        <app-loading2 ></app-loading2>
+
+      }@else {
+        @for (product of products; track $index) {
+          <app-product-item class="col-md-4" [productData]="product" ></app-product-item>
+
+        }
+      }
+    </div>
+  </div>
+  </div>
+
+</div>

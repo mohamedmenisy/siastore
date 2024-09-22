@@ -1,0 +1,12 @@
+
+
+<div class="Product-item">
+  <div class="product-img">
+    <img src="{{productData?.pictureUrl}}"   alt="">
+  </div>
+  <div class="product-info">
+    <i class="fa-solid fa-eye mx-2" routerLink="/details/{{productData?.id}}"></i>
+    <i (click)="Addtocart(productData?.id)" class="fa-solid fa-cart-arrow-down mx-2"></i>
+    <i class="fa-solid fa-heart-circle-check mx-2" (click)="AddToFav(productData?.id)"></i>
+    </div>
+</div>

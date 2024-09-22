@@ -1,0 +1,47 @@
+button{
+    width: 100%;
+    border: none;
+    outline: none;
+    color: white;
+
+    background-color: black;
+    padding: 10PX ;
+}
+
+button:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.orderinfo{
+    border: 2px solid #EFF0F3;
+    padding: 10px;
+}
+span{
+    font-size: 13px;
+}
+.bg-infoo{
+background: #f6f6f6;
+padding: 20px;
+}
+.orderitem{
+    background: #f6f6f6;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.form-control:focus{
+    outline: none;
+    border: 1px solid black;
+    box-shadow: none;
+
+}
+.form-control{
+    border-radius: 0;
+}
+.text-danger{
+    font-size: 12px;
+}
+p a img{
+    width: 60px;
+}
+td,th{
+    user-select: none;
+}

@@ -1,0 +1,17 @@
+button{
+    outline: none;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+
+}
+img{
+    width: 100%;
+}
+.notfound{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

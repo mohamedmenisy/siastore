@@ -1,0 +1,30 @@
+
+
+   <div class="layer">
+    <div class="layer2">
+       <div class="text-center">
+        <h4 class="fw-bold userSelec">ORDER PAGE</h4>
+               <span routerLink="/home" class="me-3 pointer" routerLinkActive="navActive">HOME</span>
+                <span class="userSelec">/</span>
+                 <span routerLink="/orders"  class="ms-3 pointer" routerLinkActive="navActive">ORDER</span>
+       </div>
+    </div>
+</div>
+
+    @if (orders.length > 0) {
+        <div class="container">
+            @for (item of orders; track $index) {
+                <app-orderitem (orders)="receiveOrders($event)" [orderData]="item"></app-orderitem>
+            }
+        </div>
+
+    }@else {
+        <div class="shopping container d-flex align-items-center justify-content-center min-vh-100">
+            <div>
+                <img src="assets/Images/undraw_shopping_app_flsj.png" alt="">
+                <div class="text-center">
+                    <button (click)="GoShop()">GO TO SHOP</button>
+                </div>
+            </div>
+        </div>
+    }

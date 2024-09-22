@@ -1,0 +1,150 @@
+
+
+   <div class="layer">
+    <div class="layer2">
+       <div class="text-center">
+
+        <h4 class="fw-bold userSelec">CHECKOUT PAGE </h4>
+        <span routerLink="/home" class="me-3 pointer" routerLinkActive="navActive">HOME</span>
+         <span class="userSelec">/</span>
+          <span routerLink="/orders" class="ms-3 pointer" routerLinkActive="navActive">ORDERS</span>
+           <span class="userSelec ms-3">/</span>
+            <span routerLink="/checkout" class="ms-3 pointer" routerLinkActive="navActive">CHECKOUT</span>
+       </div>
+    </div>
+</div>
+
+<div class="container min-vh-80 py-5 mt-5">
+    <div class="row">
+
+        <div class="col-md-6 ">
+            <form [formGroup]="CheckoutForm">
+                <div class="row">
+                    <div class="col-md-12 my-1">
+                        <span>Payment Method</span>
+                        <select formControlName="method" class="form-control">
+                            <option value="" disabled selected>Select payment method</option>
+                            <option value="Credit Card">Credit Card</option>
+                        </select>
+                        @if (CheckoutForm.get("method")?.errors &&CheckoutForm.get("method")?.touched) {
+                            @if (CheckoutForm.get("method")?.getError("required")) {
+                              <p class=" text-danger">Method is required</p>
+                            }}
+                    </div>
+                    <div class="col-md-12 my-1">
+                        <span>Card Number</span>
+                        <input formControlName="cartNumber" type="text" class="form-control"  id="cartNumber">
+                        @if (CheckoutForm.get("cartNumber")?.errors &&CheckoutForm.get("cartNumber")?.touched) {
+                            @if (CheckoutForm.get("cartNumber")?.getError("required")) {
+                              <p class=" text-danger">Card Number is required</p>
+                            }
+                            @if (CheckoutForm.get("cartNumber")?.getError("pattern")) {
+                              <p class=" text-danger">Enter Valid Card Number</p>
+                            }
+                          }
+                    </div>
+                    <div class="col-6 my-1">
+                        <span>ZIP CODE</span>
+                        <input formControlName="zipCode" type="text" class="form-control" id="zipCode">
+                        @if (CheckoutForm.get("zipCode")?.errors &&CheckoutForm.get("zipCode")?.touched) {
+                            @if (CheckoutForm.get("zipCode")?.getError("required")) {
+                              <p class=" text-danger">ZIP CODE is Required</p>
+                            }
+                            @if (CheckoutForm.get("zipCode")?.getError("pattern")) {
+                              <p class=" text-danger">ZIP Code Length is 5 Numbers</p>
+                            }
+                          }
+                    </div>
+                    <div class="col-6 my-1">
+                        <span>Phone Number</span>
+                        <input formControlName="phoneNumber" type="tel" class="form-control"  id="phoneNumber">
+                            @if (CheckoutForm.get("phoneNumber")?.errors &&CheckoutForm.get("phoneNumber")?.touched) {
+                              @if (CheckoutForm.get("phoneNumber")?.getError("required")) {
+                                <p class=" text-danger">phoneNumber is required</p>
+                              }
+                              @if (CheckoutForm.get("phoneNumber")?.getError("pattern")) {
+                                <p class=" text-danger">Your Phone Must Be Egyptian Number</p>
+                              }
+                            }
+                    </div>
+                    <div class="col-6 my-1">
+                        <span>Name</span>
+                        <input formControlName="customerName" type="text" class="form-control"  id="customerName">
+                        @if (CheckoutForm.get("customerName")?.errors &&CheckoutForm.get("customerName")?.touched) {
+                          @if (CheckoutForm.get("customerName")?.getError("required")) {
+                            <p class=" text-danger">Name is required</p>
+                          }
+                          @if (CheckoutForm.get("customerName")?.getError("minlength")) {
+                            <p class=" text-danger">Min Name Lenghth is 3 char</p>
+                          }
+                          @if (CheckoutForm.get("customerName")?.getError("maxlength")) {
+                            <p class=" text-danger">Max Name Lenghth is 20 char</p>
+                          }
+                        }
+                    </div>
+                    <div class="col-6 my-1">
+                        <span>Email</span>
+                        <input formControlName="customerEmail" type="email" class="form-control"  id="customerEmail">
+                        @if (CheckoutForm.get("customerEmail")?.errors &&CheckoutForm.get("customerEmail")?.touched) {
+                          @if (CheckoutForm.get("customerEmail")?.getError("required")) {
+                            <p class="text-danger">Email is required</p>
+                          }
+                          @if (CheckoutForm.get("customerEmail")?.getError("email")) {
+                            <p class=" text-danger">Email should be Example&#64;Gmail.com</p>
+                          }
+
+                        }
+                    </div>
+                    <div class="col-md-6">
+                      @if (errormessage != "") {
+                        <p class="text-danger">{{errormessage}}</p>
+                      }
+
+                        @if (isspin) {
+                          <button><i class="fa-solid fa-circle-notch fa-spin"></i></button>
+                        }@else{
+                          @if (ispayed) {
+                            <button [disabled]="CheckoutForm.invalid"><i class="fa-solid fa-check"></i></button>
+
+                        }@else {
+                            <button [disabled]="CheckoutForm.invalid" (click)="checkout()">Pay</button>
+
+                        }
+                            }
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6 order-first order-md-last">
+            @if (order !=null) {
+                <table class="table table-bordered table-hover table-striped ">
+                    <thead>
+                       <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+
+
+                            @for (item of order.orderItems; track $index) {
+                                <tr>
+                                    <td>{{item.productName}}</td>
+                                    <td>{{item.price}}</td>
+                                    <td>{{item.quantity}}</td>
+
+                                </tr>
+
+                            }
+
+                    </tbody>
+                </table>
+            }@else {
+                <img src="assets/Images/undraw_Credit_card_payment_re_o911.png" class="ifnullimg" alt="">
+            }
+        </div>
+       </div>
+</div>

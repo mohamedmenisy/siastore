@@ -1,0 +1,78 @@
+.navActive{
+  width: fit-content;
+  border-bottom: 2px solid white;
+  border-radius: 3px;
+
+}
+
+table img{
+    width: 60px;
+    height: 60px;
+}
+
+td{
+    vertical-align: middle;
+
+}
+
+.pointer{
+  cursor: pointer;
+  user-select: none;
+}
+.userSelec{
+  user-select: none;
+}
+.quantity i{
+    margin: 0 10px;
+    background-color: black;
+    color: white;
+    padding: 3px;
+  cursor: pointer;
+}
+
+  button {
+    width: fit-content;
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+
+  .Cartinfo{
+    border: 2px solid #EFF0F3;
+    padding: 10px;
+  }
+  .buttons button {
+    outline: none;
+    border: none;
+    padding: 5px 20px;
+    background-color: black;
+    color: white;
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+  }
+  .buttons button:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .layer{
+    height: 350px;
+    width: 100%;
+    background-image: url(../../../assets/Images/ABOUT3.jpg);
+    background-position: center center ;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.layer2{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+}

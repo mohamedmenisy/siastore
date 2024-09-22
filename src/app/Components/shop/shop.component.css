@@ -1,0 +1,71 @@
+.buttonClick{
+    cursor: pointer;
+
+}
+.page-item{
+    user-select: none;
+}
+.form-select:focus,.form-control:focus{
+    border-color: black;
+    box-shadow: none;
+}
+.bg-primary{
+    background-color: black !important;
+    padding: 10px;
+}
+.list-group-item.active{
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid black;
+    color: white;
+}
+.page-link.active, .active > .page-link{
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+
+}
+.page-link{
+    color: black;
+}
+.carditem{
+    transition: all 0.6s;
+}
+
+  .search{
+    background-color: black !important;
+
+    border: black 1px solid;
+    outline: none;
+  }
+  .reset{
+    border: black 1px solid;
+    background-color: transparent;
+    color: black;
+  }
+  .search , .reset {
+    padding: 5px 20px;
+  }
+  .search:hover{
+    border: black 1px solid;
+    background-color: transparent !important;
+    color: black;
+
+  }
+   .reset:hover{
+    background-color: black !important;
+    border: black 1px solid;
+    outline: none;
+    color: white;
+  }
+  input[type="search"]:focus{
+    outline-color: black;
+    border-color: black;
+  }
+  @media (max-width:767px){
+    .paginationSection{
+      padding-bottom: 80px;
+    }
+  }
+  .form-select{
+
+  }

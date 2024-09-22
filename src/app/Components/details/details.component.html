@@ -1,0 +1,68 @@
+
+
+   <div class="layer">
+    <div class="layer2">
+       <div class="text-center">
+        <h4 class="fw-bold userSelec">DETAILS</h4>
+        <span routerLink="/home" class="me-3 pointer" routerLinkActive="navActive">HOME</span>
+         <span class="userSelec">/</span>
+         <span routerLink="/details/{{product?.id}}"  class="ms-3 pointer" routerLinkActive="navActive">{{product?.name}}</span>
+       </div>
+    </div>
+</div>
+
+<div class="details">
+    <div class="container">
+        <div class="row " >
+            <div class="col-md-7 text-center">
+                <img src="{{product?.pictureUrl}}" class="w-75" alt="">
+            </div>
+            <div class="col-md-5">
+                <div class="product-info">
+                    <h3 class="h4 fw-bold text-uppercase">{{product?.name}}</h3>
+                    <div class="shipping-info">
+                        <h3 >we are committed to sustainability</h3>
+                        <p><i class="fa-solid fa-recycle"></i> <span class="text-muted">Made From 100% sustainable materials</span></p>
+                        <p><i class="fa-solid fa-box"></i> <span class="text-muted">Arrives in recycle packaging</span></p>
+                        <p><i class="fa-solid fa-signs-post"></i> <span class="text-muted">Carbon neutral shipment & delivery</span></p>
+                    </div>
+                        <div class="prod-info mt-1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-muted">{{product?.description}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="fw-bold">Price : <span class="text-muted fw-light">{{product?.price}}</span></p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="fw-bold">Type : <span class="text-muted fw-light">{{product?.productType}}</span></p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="fw-bold">Brand : <span class="text-muted fw-light">{{product?.productBrand}}</span></p>
+                                </div>
+                                <div class="col-md-12">
+                                    <button (click)="Addtocart(product?.id)"><i class="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5 g-3 align-items-center">
+            <div class="col-6">
+                <p class="userSelec">- Products related to this item</p>
+            </div>
+            <div class="col-6 text-end">
+                <span  (click)="ViewMore(product?.productType)" class="viewmore">View More</span>
+            </div>
+            @for (product of products; track $index) {
+                <app-product-item [productData]="product" class="col-md-4"></app-product-item>
+            }
+        </div>
+    </div>
+
+
+    </div>

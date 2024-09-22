@@ -1,0 +1,104 @@
+    @if (loading2) {
+        <app-loading2></app-loading2>
+    }@else {
+
+
+        <div class="container mt-4">
+            <div class="row" *ngIf="types.length > 0  && brands.length > 0">
+                <div class="col-md-3">
+                    <div class="filter">
+                        <h5 class="text-white bg-primary rounded  ">Sort</h5>
+                        <select class="form-select my-3" (change)="onchange($event)">
+                            <option value="alpha" selected >Alphabetical</option>
+                            <option value="lth" >Price : Low to High</option>
+                            <option value="htl" >Price : High to Low</option>
+                        </select>
+
+                        <h5 class="text-white bg-primary rounded  ">Brands</h5>
+                        <ul class="list-group my-3">
+                            @for (brand of brands; track $index) {
+                                <li class="list-group-item" [class.active] ="brand.id === brandidselected"
+                                 value="{{brand.id}}"
+                                 (click)="onbrandSelected(brand.id)"
+
+                                 >{{brand.name}}</li>
+                            }
+                          </ul>
+                          <h5 class="text-white bg-primary rounded  ">Types</h5>
+                          <ul class="list-group my-3">
+                            @for (type of types; track $index) {
+                                <li class="list-group-item" [class.active] ="type.id === typeidselected"
+                                 value="{{type.id}}"
+                                 (click)="ontypeSelected(type.id)"
+                                 >{{type.name}}</li>
+                            }
+                            </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    @if (isloading) {
+                        <app-loading></app-loading>
+                    }@else {
+                        <div class="mainSection">
+                            @if (errorMessage != "") {
+                                <h1 class="text-center text-danger">{{errorMessage}}</h1>
+                            }@else {
+                                <div class="row  gx-2 gy-3 mb-4">
+                                    <div class="col-md-12">
+                                        <div class=" d-flex justify-content-between align-items-center pb-2">
+                                            <div>
+                                              <span>Showing <strong>{{(pageNumber -1) * 6 + 1 }} - {{pageNumber * 6 > allproductCount ? allproductCount : pageNumber * pagesize}}</strong> of <strong>{{prodctsData?.allProducts}}</strong> Results</span>
+                                            </div>
+                                            <div class="d-flex align-items-center ">
+                                                <input type="search" placeholder="Search" [(ngModel)]="searchValue" (ngModelChange)="searchValue" class="form-control me-2">
+                                                <button class="btn btn-primary search mx-1" (click)="search()">Search</button>
+                                                <button class="btn btn-danger reset mx-1" (click)="resetFilters()">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   </div>
+                                   <div class="row pitem gx-2 gy-3">
+
+                                    @if (prodctsData?.pageSize != 0) {
+                                        @for (product of prodctsData?.products; track $index) {
+
+                                            <app-product-item class="col-md-4 carditem" [productData]="product"></app-product-item>
+                                        }
+                                    }@else{
+                                       <div class="notfound text-center">
+                                         <img src="assets/Images/undraw_Page_not_found_re_e9o6.png" class="w-75" alt="">
+                                       </div>
+                                    }
+                                   </div>
+                            }
+
+                        </div>
+
+                        <!-- if C -->
+
+
+                            <div class="paginationSection my-3">
+                                <nav aria-label="Page   navigation example ">
+                                    <ul class="pagination justify-content-end">
+                                      <li class="page-item buttonClick"><a class="page-link" (click)="previousPage()">Previous</a></li>
+                                      <li class="page-item active"><a class="page-link bg-praimary" >{{prodctsData?.pageNumber}}</a></li>
+                                      <li class="page-item  buttonClick"><a class="page-link" [hidden]="prodctsData?.pageSize==0"  (click)="nextPage()">Next</a></li>
+
+                                    </ul>
+                                  </nav>
+                            </div>
+
+                    }
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    }

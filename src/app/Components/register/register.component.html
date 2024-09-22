@@ -1,0 +1,148 @@
+<div class="register">
+  <div class="container w-75">
+      <div class="registerform">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h2 class="fw-bold">SIGNUP</h2>
+          <form  class="w-100" [formGroup]="registerForm" (ngSubmit)="register()">
+
+
+
+            <div class="row ">
+              <div class="col-12 ">
+                <div class="input-item">
+                  <span class="ms-1">Name</span>
+                  <input formControlName="name" type="text" class="form-control" placeholder="Name" id="name">
+                  @if (registerForm.get("name")?.errors && registerForm.get("name")?.touched) {
+                    @if (registerForm.get("name")?.getError("required")) {
+                      <p class=" text-white">Name is required</p>
+                    }
+                    @if (registerForm.get("name")?.getError("minlength")) {
+                      <p class=" text-white">minLength is 3</p>
+                    }
+                    @if (registerForm.get("name")?.getError("maxlength")) {
+                      <p class=" text-white">maxLength is 20</p>
+                    }
+                  }
+              </div>
+              </div>
+              <div class="col-12 ">
+                <div class="input-item">
+                  <span class="ms-1">UserName</span>
+
+                  <input formControlName="userName" type="text" class="form-control" placeholder="userName" id="username">
+          @if (registerForm.get("userName")?.errors &&registerForm.get("userName")?.touched) {
+            @if (registerForm.get("userName")?.getError("required")) {
+              <p class=" text-white">userName is required</p>
+            }
+            @if (registerForm.get("userName")?.getError("minlength")) {
+              <p class=" text-white">minLength is 3</p>
+            }
+            @if (registerForm.get("userName")?.getError("maxlength")) {
+              <p class=" text-white">maxLength is 20</p>
+            }
+          }
+              </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6 ">
+                <div class="input-item">
+                  <span class="ms-1">Password</span>
+
+                  <input formControlName="password" type="password" class="form-control" placeholder="password" id="password">
+                  @if (registerForm.get("password")?.errors &&registerForm.get("password")?.touched) {
+                    @if (registerForm.get("password")?.getError("required")) {
+                      <p class=" text-white">password is required</p>
+                    }
+                    @if (registerForm.get("password")?.getError("pattern")) {
+                      <p class=" text-white">Password must contain 6 numbers , one capital and small letter </p>
+                    }
+                  }
+              </div>
+              </div>
+              <div class="col-6 ">
+                <div class="input-item">
+                  <span class="ms-1">Confirm password</span>
+
+                  <input formControlName="confirmPassword" type="password" class="form-control" placeholder="confirm password" id="confirmPassword">
+                  @if (registerForm.get("confirmPassword")?.errors &&registerForm.get("confirmPassword")?.touched) {
+                    @if (registerForm.get("confirmPassword")?.getError("required")) {
+                      <p class=" text-white"> Password is required</p>
+                    }
+                    @if (registerForm.get("confirmPassword")?.getError("mismatch")) {
+                      <p class="text-white">not match</p>
+                    }
+
+                  }
+              </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="input-item">
+                  <span class="ms-1">Email</span>
+
+                  <input formControlName="email" type="email" class="form-control" placeholder="email" id="email">
+                  @if (registerForm.get("email")?.errors &&registerForm.get("email")?.touched) {
+                    @if (registerForm.get("email")?.getError("required")) {
+                      <p class="text-white">Email is required</p>
+                    }
+                    @if (registerForm.get("email")?.getError("email")) {
+                      <p class=" text-white">Email should be Example&#124;email.com</p>
+                    }
+
+                  }
+              </div>
+              </div>
+              <div class="col-12">
+                <div class="input-item">
+                  <span class="ms-1">Phone</span>
+
+                  <input formControlName="phone" type="tel" class="form-control" placeholder="phone" id="phone">
+          @if (registerForm.get("phone")?.errors &&registerForm.get("phone")?.touched) {
+            @if (registerForm.get("phone")?.getError("required")) {
+              <p class=" text-white">phone is required</p>
+            }
+            @if (registerForm.get("phone")?.getError("pattern")) {
+              <p class=" text-white">Your Phone Must Be Egyptian Number</p>
+            }
+          }
+              </div>
+              </div>
+            </div>
+              @if (errorlist.length > 0 ) {
+                @for (item of errorlist; track $index) {
+                  <p class="text-white">{{item}}</p>
+                }
+              }
+              @if (errormessage != "") {
+                <p class="text-white">{{errormessage}}</p>
+              }
+
+
+              <div class="input-item">
+                @if (isspin) {
+                  <button><i class="fa-solid fa-circle-notch fa-spin"></i></button>
+                }@else{
+
+                  <button [disabled]="registerForm.invalid">Register</button>
+                }
+                <div class="my-3">
+                  <span routerLink="/login" class="login">I Already Have One !</span>
+
+                </div>
+              </div>
+
+    </form>
+        </div>
+        <div class="col-md-6 text-center signupimg  overflow-hidden">
+          <img src="assets/Images/signup-image.jpg"  alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

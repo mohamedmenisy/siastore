@@ -1,0 +1,84 @@
+
+<div class="min-vh-100">
+
+   <div class="layer">
+    <div class="layer2">
+       <div class="text-center">
+        <h4 class="fw-bold userSelec">CART PAGE</h4>
+        <span routerLink="/home" class="me-3 pointer" routerLinkActive="navActive">HOME</span>
+         <span class="userSelec">/</span>
+          <span routerLink="/cartpage" class="ms-3 pointer" routerLinkActive="navActive">CART</span>
+       </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-3">
+        <div class="col-md-8">
+            <table class="table table-bordered table-hover mt-5 ">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th class="text-center">quantity</th>
+                        <th>Total Price</th>
+                        <th></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (length > 0) {
+                        @for (product of usercart?.cartItems; track $index) {
+                            <tr>
+                                <td class="text-center"><img src="{{product.img}}" alt="{{product.name}}" ></td>
+                                <td>{{product.name}}</td>
+                                <td>{{product.price}}</td>
+                                <td class="text-center quantity ">
+                                    <button (click)="MinusQ(product)">
+                                        <i class="fa-solid fa-minus"  ></i>
+                                    </button>
+                                    {{product.quantity}}
+                                    <button  (click)="PlusQ(product)">
+                                        <i   class="fa-solid fa-plus"></i>
+                                    </button>
+                                </td>
+                                <td>{{TotalPrice(product.quantity,product.price)}}</td>
+                                <td class="text-center"><i (click)="deleteProduct(product.productId)" class="fa-solid fa-delete-left fs-3"></i></td>
+                            </tr>
+                        }
+                    }@else {
+                        <tr>
+                            <td colspan="6" class="bg-dark text-center text-white">NO RESULTS</td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="col-md-4">
+            <div class="Cartinfo mt-5">
+                <h4 class="fw-bold">CART INFORMATION</h4>
+                <hr class="text-muted">
+                <div class="d-flex justify-content-between my-4">
+                    <span class="fw-bold">TotalPrice</span>
+                    <span>{{usercart?.totalPrice}}EG</span>
+                </div>
+                <hr class="text-muted">
+                <div class="buttons ">
+
+                    <button (click)="CreateOrder()">ORDER</button>
+                    <button (click)="updatecart()">UPDATE CART</button>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

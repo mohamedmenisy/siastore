@@ -1,0 +1,75 @@
+
+.info p{
+    margin: 0;
+}
+.info p:last-of-type{
+    margin-bottom: 10px;
+}
+.input-item p {
+    margin-left: 10px;
+
+    font-size: 12px;
+}
+.login{
+    user-select: none;
+    cursor: pointer;
+}
+.input-item input:focus{
+    border-color: black;
+    outline: none;
+    box-shadow: none;
+}
+::placeholder{
+    transition: all 0.6s;
+}
+.input-item input:focus::placeholder{
+    opacity: 0;
+}
+
+
+.input-item{
+    margin: 10px 0;
+}
+.input-item input{
+    width: 100%;
+    border-radius: 0;
+}
+button{
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+    padding:4px 20px ;
+    width: 100px;
+
+}
+.register{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url(../../../assets/Images/bg-registration-form-2.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px 0;
+}
+.registerform{
+    background-color: white;
+    padding: 60px 20px;
+
+
+}
+.text-white{
+    color: red !important;
+    margin: 0 !important;
+
+}
+.col-md-6 img{
+    width: 400px;
+}
+
+@media (max-width:767px) {
+    .signupimg{
+        display: none;
+    }
+}

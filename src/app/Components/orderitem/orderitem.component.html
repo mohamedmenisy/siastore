@@ -1,0 +1,123 @@
+@if (orderData.orderStatus == "Pending") {
+<div class="orderitem">
+
+        <div class="row my-4">
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover table-striped ">
+                    <thead>
+                       <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                        @if (orderData != undefined) {
+
+                            @for (item of orderData.orderItems; track $index) {
+                                <tr>
+                                    <td>{{item.productName}}</td>
+                                    <td>{{item.price}}</td>
+                                    <td>{{item.quantity}}</td>
+
+                                </tr>
+
+                            }
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-5">
+
+                <div class="orderinfo">
+                  <h5 class="fw-bold">ORDER INFO</h5>
+                  <hr class="text-muted">
+
+                  <div class="d-flex align-items-center justify-content-between">
+                      <span class="fw-bold">TOTAL AMOUNT</span>
+                      <span>{{orderData.totalOrderPrice}}EG</span>
+                  </div>
+                  <hr class="text-muted">
+                  <div class="d-flex align-items-center justify-content-between">
+                      <span class="fw-bold">ORDER STATUS</span>
+                      <span>{{orderData.orderStatus}}</span>
+                  </div>
+                  <hr class="text-muted">
+                  <div>
+                      <button (click)="SendOrder(orderData)">CHECKOUT</button>
+                  </div>
+                  <div class="my-2">
+                      <button (click)="CancelOrder(orderData.id,orderData.userID)">CANCEL ORDER</button>
+                  </div>
+              </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+</div>
+}@else {
+    <div class="orderitem">
+
+        <div class="row my-4">
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover table-striped ">
+                    <thead>
+                       <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                        @if (orderData != undefined) {
+
+                            @for (item of orderData.orderItems; track $index) {
+                                <tr>
+                                    <td>{{item.productName}}</td>
+                                    <td>{{item.price}}</td>
+                                    <td>{{item.quantity}}</td>
+
+                                </tr>
+
+                            }
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-5">
+
+                <div class="orderinfo">
+                  <h5 class="fw-bold">ORDER INFO</h5>
+                  <hr class="text-muted">
+
+                  <div class="d-flex align-items-center justify-content-between">
+                      <span class="fw-bold">TOTAL AMOUNT</span>
+                      <span>{{orderData.totalOrderPrice}}EG</span>
+                  </div>
+                  <hr class="text-muted">
+                  <div class="d-flex align-items-center justify-content-between">
+                      <span class="fw-bold">ORDER STATUS</span>
+                      <span>{{orderData.orderStatus}}</span>
+                  </div>
+
+              </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+</div>
+}

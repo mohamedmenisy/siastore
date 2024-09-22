@@ -1,0 +1,125 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <div class="container">
+      <a class="navbar-brand">
+        <img class="logo" src="assets/Images/sia-high-resolution-logo (1).png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto  mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" routerLink="home" routerLinkActive="navActive">HOME</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" routerLink="shop" routerLinkActive="navActive">SHOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" routerLink="about" routerLinkActive="navActive">ABOUT</a>
+          </li>
+
+
+
+
+          @if(user != null){
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" routerLink="orders" routerLinkActive="navActive">ORDERS</a>
+          </li>
+            }
+
+
+
+
+
+
+
+
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          @if(user == null){
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" routerLink="login" routerLinkActive="navActive">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" routerLink="register" routerLinkActive="navActive">Register</a>
+            </li>
+          }@else {
+
+            <li class="nav-item">
+              <a class="nav-link " (click)="getFavItems()" aria-current="page"  routerLinkActive="navActive" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fa-solid fa-heart  text-white-50 "></i>
+              </a>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" routerLink="cartpage" routerLinkActive="navActive">
+                <i class="fa-solid fa-cart-shopping  text-white-50 "></i>
+              </a>
+
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" (click)="logout()"  aria-current="page" routerLink="login" routerLinkActive="navActive"><i class="fa-solid fa-right-to-bracket "></i>Logout</a>
+            </li>
+
+          }
+
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+<nav>
+
+
+<!-- Modal -->
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Favorite Products</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row gy-3">
+            @if (favitems.length > 0) {
+              @for (item of favitems; track $index) {
+
+                <div class="col-4">
+                  <div class="productfav">
+                    <div class="favimg">
+                      <img src="{{item.img}}" class="w-100" alt="">
+
+                    </div>
+                    <div class="product-info">
+                      <i class="fa-solid fa-eye mx-2" routerLink="/details/{{item.productId}}"></i>
+                      <i (click)="Addtocart(item.productId)" class="fa-solid fa-cart-arrow-down mx-2"></i>
+                      <i class="fa-solid fa-heart-circle-minus mx-2" (click)="deletFavitem(item.productId)"></i>
+                    </div>
+                  </div>
+
+                </div>
+
+              }
+            }@else {
+              <div class="text-center">
+
+                <img src="assets/Images/undraw_With_love_re_1q3m.png" class="favv" alt="">
+              </div>
+            }
+
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
